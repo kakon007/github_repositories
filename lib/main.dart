@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
                 statusBarColor: Colors.transparent,
                 statusBarIconBrightness: Brightness.dark)),
       ),
-      home: const HomeView(),
+      home: HomeView(),
     );
   }
 }
