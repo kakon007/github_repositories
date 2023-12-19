@@ -17,7 +17,7 @@ class HomeView extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Obx(() => _homeViewController.isLoading.value
             ? const Center(child: CircularProgressIndicator())
-            : const RepoListItem()),
+            : RepoListItem()),
       ),
     );
   }

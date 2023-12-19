@@ -1,15 +1,19 @@
+import 'package:bs23_flutter_task_101/view/home/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../../configs/colors_utils.dart';
 
 class RepoListItem extends StatelessWidget {
-  const RepoListItem({super.key});
+  final HomeViewController _homeViewController = Get.find();
+  RepoListItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
-      itemCount: 100,
+      itemCount: _homeViewController.listOfRepoItems.length,
       itemBuilder: (context, index) {
         return Container(
           width: double.infinity,
@@ -19,13 +23,15 @@ class RepoListItem extends StatelessWidget {
             color: Colors.grey.shade100,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Title",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    _homeViewController.listOfRepoItems[index].name!,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Container(
                     height: 24,
@@ -46,11 +52,14 @@ class RepoListItem extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                "Flutter makes it easy and fast to build beautiful apps for mobile and beyond",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                _homeViewController.listOfRepoItems[index].description!,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Row(
                 children: [
@@ -63,8 +72,9 @@ class RepoListItem extends StatelessWidget {
                     width: 3,
                   ),
                   Text(
-                    "Jahid",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    _homeViewController.listOfRepoItems[index].owner!.login!,
+                    style: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
                     width: 10,
@@ -78,8 +88,9 @@ class RepoListItem extends StatelessWidget {
                     width: 3,
                   ),
                   Text(
-                    "1000",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    "${_homeViewController.listOfRepoItems[index].forksCount!}",
+                    style: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
                     width: 10,
@@ -93,13 +104,16 @@ class RepoListItem extends StatelessWidget {
                     width: 3,
                   ),
                   Text(
-                    "10000",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    "${_homeViewController.listOfRepoItems[index].stargazersCount!}",
+                    style: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w500),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
-                    "21-09-2021",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    DateFormat('dd-MM-yyyy').format(
+                        _homeViewController.listOfRepoItems[index].createdAt!),
+                    style: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
