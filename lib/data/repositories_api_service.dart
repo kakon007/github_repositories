@@ -4,7 +4,7 @@ import 'package:bs23_flutter_task_101/service/network/network_service.dart';
 import '../model/gitHub_repository_model.dart';
 
 class RepositoriesApiService {
-  Future<GitHubRepositoryModel?> getGitHubSearchedRepositories(
+  Future<GitHubRepositoryModel?> getGitHubRepositories(
       {Map<String, dynamic>? queryParams}) async {
     var response = await NetworkService().networkRequest(
         url: Server.SEARCH_REPOSITORIES,
