@@ -1,5 +1,7 @@
+import 'package:bs23_flutter_task_101/box/boxes.dart';
 import 'package:bs23_flutter_task_101/data/repositories_api_service.dart';
-import 'package:bs23_flutter_task_101/model/gitHub_repository_model.dart';
+import 'package:bs23_flutter_task_101/model/api_service_model/gitHub_repository_model.dart';
+import 'package:bs23_flutter_task_101/model/local_db_model/repo_list_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +14,7 @@ class HomeViewController extends GetxController {
   int pageStart = 1;
   int pageCount = 10;
   late ScrollController scrollController;
+  List<RepoListHiveModel>? localDataRepoListItem;
 
   @override
   void onInit() {
@@ -66,9 +69,33 @@ class HomeViewController extends GetxController {
           final isExists = listOfRepoItems!.any((e) => items.id == e.id);
           if (!isExists) {
             listOfRepoItems!.add(items);
+            // final data = RepoListHiveModel(
+            //   name: items.name,
+            //   owner: items.owner,
+            //   description: items.description,
+            //   stargazersCount: items.stargazersCount,
+            //   createdAt: items.createdAt,
+            // );
+            // final box = Boxes.getData();
+            // box.put('newData', data);
+            // localDataRepoListItem =
+            //     box.values.toList().cast<RepoListHiveModel>();
+            // //    listOfRepoItems!.addAll(dataa);
+            // //print('Data Length: ${dataa.length}');
+            // data.save();
           }
         } else {
           listOfRepoItems!.add(items);
+          // final data = RepoListHiveModel(
+          //   name: items.name,
+          //   owner: items.owner,
+          //   description: items.description,
+          //   stargazersCount: items.stargazersCount,
+          //   createdAt: items.createdAt,
+          // );
+          // final box = Boxes.getData();
+          // box.add(data);
+          // data.save();
         }
       }
       isScrolled.value = false;
