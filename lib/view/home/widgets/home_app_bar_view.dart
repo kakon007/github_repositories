@@ -7,6 +7,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 2,
       title: UIHelper().drawAppbarTitle(title: "GitHub Repositories"),
       centerTitle: true,
     );

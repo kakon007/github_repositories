@@ -122,7 +122,7 @@ class RepoListItem extends StatelessWidget {
         );
       },
       separatorBuilder: (context, index) => const SizedBox(
-        height: 10,
+        height: 15,
       ),
     );
   }

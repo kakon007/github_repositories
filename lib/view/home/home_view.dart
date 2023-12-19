@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: const HomeAppBar(),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8),
         child: Obx(() => _homeViewController.isLoading.value
             ? const Center(child: CircularProgressIndicator())
             : RepoListItem()),
