@@ -119,7 +119,7 @@ class Item {
   int? openIssues;
   int? watchers;
   DefaultBranch? defaultBranch;
-  int? score;
+  double? score;
 
   Item({
     this.id,
