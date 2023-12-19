@@ -3,6 +3,7 @@ import 'package:bs23_flutter_task_101/configs/myTheme.dart';
 import 'package:bs23_flutter_task_101/view/home/home_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -21,7 +22,14 @@ class RepoListItem extends StatelessWidget {
           : RefreshIndicator(
               color: Colors.black,
               backgroundColor: MyTheme.appBarColor,
-              onRefresh: _homeViewController.getRefreshData,
+              onRefresh: () async {
+                _homeViewController.canRefresh();
+                if (_homeViewController.isRefreshed.value) {
+                  _homeViewController.getRefreshData();
+                } else {
+                  EasyLoading.showInfo("You can refresh after 30 minutes");
+                }
+              },
               child: ListView.separated(
                 padding: const EdgeInsets.all(10),
                 addAutomaticKeepAlives: true,

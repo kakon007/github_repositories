@@ -10,11 +10,13 @@ class HomeViewController extends GetxController {
   RxBool isLoading = RxBool(false);
   RxBool hasMoreData = RxBool(true);
   RxBool isScrolled = RxBool(false);
+  RxBool isRefreshed = RxBool(false);
 
   int pageStart = 1;
   int pageCount = 10;
   late ScrollController scrollController;
   List<RepoListHiveModel>? localDataRepoListItem;
+  DateTime lastRefreshTime = DateTime.now();
 
   @override
   void onInit() {
@@ -48,6 +50,12 @@ class HomeViewController extends GetxController {
     }
   }
 
+  bool canRefresh() {
+    isRefreshed.value = DateTime.now().difference(lastRefreshTime) >=
+        const Duration(minutes: 30);
+    return isRefreshed.value;
+  }
+
   void fetchGitHubRepositories() async {
     Map<String, dynamic> queryParameters = {
       "q": "Flutter",
@@ -69,6 +77,8 @@ class HomeViewController extends GetxController {
           final isExists = listOfRepoItems!.any((e) => items.id == e.id);
           if (!isExists) {
             listOfRepoItems!.add(items);
+            lastRefreshTime = DateTime.now();
+
             // final data = RepoListHiveModel(
             //   name: items.name,
             //   owner: items.owner,
