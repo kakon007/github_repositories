@@ -1,5 +1,5 @@
-import 'package:bs23_flutter_task_101/configs/appConfig.dart';
-import 'package:bs23_flutter_task_101/configs/myTheme.dart';
+import 'package:bs23_flutter_task_101/configs/app_config.dart';
+import 'package:bs23_flutter_task_101/configs/my_theme.dart';
 import 'package:bs23_flutter_task_101/mixin.dart';
 import 'package:bs23_flutter_task_101/view/home/home_controller.dart';
 import 'package:bs23_flutter_task_101/view/repository_details/repository_details_view.dart';

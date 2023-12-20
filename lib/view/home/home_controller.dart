@@ -120,6 +120,9 @@ class HomeViewController extends GetxController {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
           elevation: 2,
           title: const Text('Sort By',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),

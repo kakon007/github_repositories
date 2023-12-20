@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:bs23_flutter_task_101/configs/myTheme.dart';
+import 'package:bs23_flutter_task_101/configs/my_theme.dart';
 import 'package:bs23_flutter_task_101/mixin.dart';
 import 'package:bs23_flutter_task_101/view/home/home_view.dart';
 import 'package:flutter/material.dart';
