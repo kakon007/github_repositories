@@ -20,7 +20,7 @@ class HomeViewController extends GetxController {
   DateTime lastRefreshTime = DateTime.now();
 
   RxInt indexSortBy = RxInt(0);
-  final List<String> listofSortingNames = ["Star Count", "Last Update Time"];
+  final List<String> listofSortingNames = ["Star Count", "Last Update Date"];
 
   @override
   void onInit() {
@@ -115,9 +115,10 @@ class HomeViewController extends GetxController {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        return const AlertDialog(
+        return AlertDialog(
           elevation: 2,
-          title: Text('Sort By'),
+          title: const Text('Sort By',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           content: FilterWidget(),
         );
       },

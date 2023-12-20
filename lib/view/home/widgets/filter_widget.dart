@@ -1,16 +1,12 @@
+import 'package:bs23_flutter_task_101/utils/colors_utils.dart';
 import 'package:bs23_flutter_task_101/view/home/home_controller.dart';
 import 'package:bs23_flutter_task_101/view/home/widgets/radio_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FilterWidget extends StatefulWidget {
-  const FilterWidget({super.key});
+class FilterWidget extends StatelessWidget {
+  FilterWidget({super.key});
 
-  @override
-  State<FilterWidget> createState() => _FilterWidgetState();
-}
-
-class _FilterWidgetState extends State<FilterWidget> {
   final HomeViewController _homeViewController = Get.find();
 
   @override
@@ -32,14 +28,14 @@ class _FilterWidgetState extends State<FilterWidget> {
                   value: 0,
                   groupValue: _homeViewController.indexSortBy.value,
                   label: _homeViewController.listofSortingNames[0],
-                  borderColor: Colors.white,
+                  borderColor: _homeViewController.indexSortBy.value == 0
+                      ? ColorUtils.blue700
+                      : ColorUtils.grey200,
                   onChanged: (value) {
                     _homeViewController.indexSortBy.value = value;
-                    setState(() {
-                      _homeViewController
-                          .getRefreshData()
-                          .then((value) => Get.back());
-                    });
+                    _homeViewController
+                        .getRefreshData()
+                        .then((value) => Get.back());
                   },
                 ),
               ),
@@ -50,14 +46,15 @@ class _FilterWidgetState extends State<FilterWidget> {
                   value: 1,
                   groupValue: _homeViewController.indexSortBy.value,
                   label: _homeViewController.listofSortingNames[1],
-                  borderColor: Colors.white,
+                  borderColor: _homeViewController.indexSortBy.value == 1
+                      ? ColorUtils.blue700
+                      : ColorUtils.grey200,
                   onChanged: (value) {
                     _homeViewController.indexSortBy.value = value;
-                    setState(() {
-                      _homeViewController
-                          .getRefreshData()
-                          .then((value) => Get.back());
-                    });
+
+                    _homeViewController
+                        .getRefreshData()
+                        .then((value) => Get.back());
                   },
                 ),
               )
