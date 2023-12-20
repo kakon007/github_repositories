@@ -292,7 +292,7 @@ class Item {
         forks: json["forks"],
         openIssues: json["open_issues"],
         watchers: json["watchers"],
-        defaultBranch: defaultBranchValues.map[json["default_branch"]]!,
+        defaultBranch: defaultBranchValues.map[json["default_branch"]],
         score: json["score"],
       );
 

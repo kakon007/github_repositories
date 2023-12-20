@@ -2,6 +2,7 @@ import 'package:bs23_flutter_task_101/box/boxes.dart';
 import 'package:bs23_flutter_task_101/data/repositories_api_service.dart';
 import 'package:bs23_flutter_task_101/model/api_service_model/gitHub_repository_model.dart';
 import 'package:bs23_flutter_task_101/model/local_db_model/repo_list_model.dart';
+import 'package:bs23_flutter_task_101/view/home/widgets/filter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +18,9 @@ class HomeViewController extends GetxController {
   late ScrollController scrollController;
   List<RepoListHiveModel>? localDataRepoListItem;
   DateTime lastRefreshTime = DateTime.now();
+
+  RxInt indexSortBy = RxInt(0);
+  final List<String> listofSortingNames = ["Star Count", "Last Update Time"];
 
   @override
   void onInit() {
@@ -61,7 +65,7 @@ class HomeViewController extends GetxController {
       "q": "Flutter",
       "page": pageStart,
       "per_page": pageCount,
-      "sort": "stars",
+      "sort": indexSortBy.value == 0 ? "stars" : "updated",
       "order": "desc"
     };
     var response = await RepositoriesApiService()
@@ -78,6 +82,8 @@ class HomeViewController extends GetxController {
           if (!isExists) {
             listOfRepoItems!.add(items);
             lastRefreshTime = DateTime.now();
+
+            //Adding Data To Local DB Hive//////////
 
             // final data = RepoListHiveModel(
             //   name: items.name,
@@ -96,16 +102,6 @@ class HomeViewController extends GetxController {
           }
         } else {
           listOfRepoItems!.add(items);
-          // final data = RepoListHiveModel(
-          //   name: items.name,
-          //   owner: items.owner,
-          //   description: items.description,
-          //   stargazersCount: items.stargazersCount,
-          //   createdAt: items.createdAt,
-          // );
-          // final box = Boxes.getData();
-          // box.add(data);
-          // data.save();
         }
       }
       isScrolled.value = false;
@@ -113,5 +109,18 @@ class HomeViewController extends GetxController {
       hasMoreData.value = false;
     }
     isLoading.value = false;
+  }
+
+  Future<void> showMyDialog(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return const AlertDialog(
+          elevation: 2,
+          title: Text('Sort By'),
+          content: FilterWidget(),
+        );
+      },
+    );
   }
 }

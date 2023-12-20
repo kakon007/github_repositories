@@ -1,4 +1,5 @@
 import 'package:bs23_flutter_task_101/shared/helper/common/ui_helper.dart';
+import 'package:bs23_flutter_task_101/view/home/widgets/filter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: UIHelper().drawAppbarTitle(title: "GitHub Repositories"),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            _homeViewController.showMyDialog(context);
+          },
           icon: const Icon(Icons.filter_alt_sharp),
         ),
       ],
