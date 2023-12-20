@@ -1,16 +1,36 @@
+import 'package:bs23_flutter_task_101/view/repository_details/repository_details_controller.dart';
+import 'package:bs23_flutter_task_101/view/repository_details/widgets/repo_description_widget.dart';
+import 'package:bs23_flutter_task_101/view/repository_details/widgets/repo_header_widget.dart';
+import 'package:bs23_flutter_task_101/view/repository_details/widgets/repo_others_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RepositoryDetailsView extends StatelessWidget {
-  const RepositoryDetailsView({super.key});
+  final RepositoryDetailsController _repoDetailsViewController =
+      Get.put(RepositoryDetailsController());
+
+  RepositoryDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Repository Details"),
+        title: Text("${_repoDetailsViewController.listOfRepoItems.name}",
+            style: const TextStyle(color: Colors.black)),
       ),
-      body: Column(
-        children: [],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ProfileHeaderWidget(),
+              RepoDescriptionWidget(),
+              RepoOthersWidgets()
+            ],
+          ),
+        ),
       ),
     );
   }
