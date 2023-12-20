@@ -67,7 +67,8 @@ class RepoListItem extends StatelessWidget {
                                   flex: 2,
                                   child: Text(
                                     _homeViewController
-                                        .listOfRepoItems![index].name!,
+                                            .listOfRepoItems![index].name ??
+                                        '',
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
@@ -96,7 +97,8 @@ class RepoListItem extends StatelessWidget {
                             ),
                             Text(
                               _homeViewController
-                                  .listOfRepoItems![index].description!,
+                                      .listOfRepoItems![index].description ??
+                                  '',
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
@@ -116,8 +118,9 @@ class RepoListItem extends StatelessWidget {
                                   width: 3,
                                 ),
                                 Text(
-                                  _homeViewController
-                                      .listOfRepoItems![index].owner!.login!,
+                                  _homeViewController.listOfRepoItems![index]
+                                          .owner!.login ??
+                                      '',
                                   style: const TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500),
@@ -150,16 +153,18 @@ class RepoListItem extends StatelessWidget {
                                   width: 3,
                                 ),
                                 Text(
-                                  "${_homeViewController.listOfRepoItems![index].stargazersCount!}",
+                                  "${_homeViewController.listOfRepoItems![index].stargazersCount ?? ''}",
                                   style: const TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500),
                                 ),
                                 const Spacer(),
                                 Text(
-                                  DateFormat('dd-MM-yyyy').format(
+                                  DateFormat('MM-dd-yyyy HH:mm a').format(
                                       _homeViewController
-                                          .listOfRepoItems![index].createdAt!),
+                                              .listOfRepoItems![index]
+                                              .updatedAt ??
+                                          DateTime.now()),
                                   style: const TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500),

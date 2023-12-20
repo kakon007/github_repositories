@@ -1,4 +1,5 @@
 import 'package:bs23_flutter_task_101/view/home/home_controller.dart';
+import 'package:bs23_flutter_task_101/view/home/widgets/home_view_shimmer.dart';
 import 'package:bs23_flutter_task_101/view/home/widgets/repo_list_items.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,9 +13,9 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const HomeAppBar(),
+      appBar: HomeAppBar(),
       body: Obx(() => _homeViewController.isLoading.value
-          ? const Center(child: CircularProgressIndicator())
+          ? const HomeViewShimmer()
           : RepoListItem()),
     );
   }
