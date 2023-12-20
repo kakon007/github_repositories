@@ -30,13 +30,13 @@ class ProfileHeaderWidget extends StatelessWidget with Mixin {
               ),
             ),
             child: _repoDetailsViewController
-                        .listOfRepoItems.owner?.avatarUrl !=
+                        .repoItemDetails.owner?.avatarUrl !=
                     null
                 ? CircleAvatar(
                     backgroundColor: const Color(0xffE9F0F7),
                     backgroundImage: CachedNetworkImageProvider(
                         _repoDetailsViewController
-                            .listOfRepoItems.owner!.avatarUrl!))
+                            .repoItemDetails.owner!.avatarUrl!))
                 : CircleAvatar(
                     backgroundColor: ColorUtils.grey50,
                     child: Padding(
@@ -46,17 +46,17 @@ class ProfileHeaderWidget extends StatelessWidget with Mixin {
                   ),
           ),
           const SizedBox(height: 12),
-          Text(_repoDetailsViewController.listOfRepoItems.owner?.login ?? '',
+          Text(_repoDetailsViewController.repoItemDetails.owner?.login ?? '',
               style:
                   const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           const SizedBox(height: 2),
-          _repoDetailsViewController.listOfRepoItems.updatedAt != null
+          _repoDetailsViewController.repoItemDetails.updatedAt != null
               ? Text(
                   // ignore: prefer_interpolation_to_compose_strings
                   "Last Updated at " +
                       DateFormat('MM-dd-yy HH:mm a').format(
                           _repoDetailsViewController
-                                  .listOfRepoItems.updatedAt ??
+                                  .repoItemDetails.updatedAt ??
                               DateTime.now()),
                   style: TextStyle(
                       fontSize: 12,

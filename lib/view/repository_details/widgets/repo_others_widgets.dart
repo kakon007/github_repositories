@@ -26,32 +26,32 @@ class RepoOthersWidgets extends StatelessWidget {
         _getContrainer(
             Icons.star,
             'Stars',
-            _repoDetailsViewController.listOfRepoItems.stargazersCount
+            _repoDetailsViewController.repoItemDetails.stargazersCount
                 .toString()),
         const SizedBox(height: 8),
         _getContrainer(Icons.call_split, 'Forks',
-            _repoDetailsViewController.listOfRepoItems.forksCount.toString()),
+            _repoDetailsViewController.repoItemDetails.forksCount.toString()),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.remove_red_eye,
             'Watchers',
-            _repoDetailsViewController.listOfRepoItems.watchersCount
+            _repoDetailsViewController.repoItemDetails.watchersCount
                 .toString()),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.error,
             'Open Issues',
-            _repoDetailsViewController.listOfRepoItems.openIssuesCount
+            _repoDetailsViewController.repoItemDetails.openIssuesCount
                 .toString()),
         const SizedBox(height: 8),
         _getContrainer(Icons.code, 'Language',
-            _repoDetailsViewController.listOfRepoItems.language ?? ''),
+            _repoDetailsViewController.repoItemDetails.language ?? ''),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.calendar_today,
             'Created At',
             DateFormat('MM-dd-yyyy')
-                .format(_repoDetailsViewController.listOfRepoItems.createdAt ??
+                .format(_repoDetailsViewController.repoItemDetails.createdAt ??
                     DateTime.now())
                 .toString()),
         const SizedBox(height: 8),
@@ -59,7 +59,7 @@ class RepoOthersWidgets extends StatelessWidget {
             Icons.calendar_today,
             'Updated At',
             DateFormat('MM-dd-yyyy')
-                .format(_repoDetailsViewController.listOfRepoItems.updatedAt ??
+                .format(_repoDetailsViewController.repoItemDetails.updatedAt ??
                     DateTime.now())
                 .toString()),
         const SizedBox(height: 8),
@@ -67,7 +67,7 @@ class RepoOthersWidgets extends StatelessWidget {
             Icons.calendar_today,
             'Pushed At',
             DateFormat('MM-dd-yyyy')
-                .format(_repoDetailsViewController.listOfRepoItems.pushedAt ??
+                .format(_repoDetailsViewController.repoItemDetails.pushedAt ??
                     DateTime.now())
                 .toString()),
       ],
