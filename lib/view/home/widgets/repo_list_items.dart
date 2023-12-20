@@ -8,7 +8,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../../configs/colors_utils.dart';
+import '../../../utils/colors_utils.dart';
 
 class RepoListItem extends StatelessWidget {
   final HomeViewController _homeViewController = Get.find();

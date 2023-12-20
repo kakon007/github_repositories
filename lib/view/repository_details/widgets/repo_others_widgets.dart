@@ -1,4 +1,4 @@
-import 'package:bs23_flutter_task_101/configs/colors_utils.dart';
+import 'package:bs23_flutter_task_101/utils/colors_utils.dart';
 import 'package:bs23_flutter_task_101/view/repository_details/repository_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
