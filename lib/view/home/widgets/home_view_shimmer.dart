@@ -24,7 +24,7 @@ class HomeViewShimmer extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) {
-          return SizedBox(height: 16);
+          return const SizedBox(height: 16);
         },
       ),
     );

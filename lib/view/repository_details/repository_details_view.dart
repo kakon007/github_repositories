@@ -26,7 +26,9 @@ class RepositoryDetailsView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ProfileHeaderWidget(),
-              RepoDescriptionWidget(),
+              const SizedBox(height: 16),
+              RepoDescriptionAndLinkWidget(),
+              const SizedBox(height: 16),
               RepoOthersWidgets()
             ],
           ),

@@ -48,13 +48,13 @@ class ProfileHeaderWidget extends StatelessWidget with Mixin {
           const SizedBox(height: 12),
           Text(_repoDetailsViewController.listOfRepoItems.owner?.login ?? '',
               style:
-                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                  const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           const SizedBox(height: 2),
           _repoDetailsViewController.listOfRepoItems.updatedAt != null
               ? Text(
                   // ignore: prefer_interpolation_to_compose_strings
                   "Last Updated at " +
-                      DateFormat('MM-dd-yyyy HH:mm a').format(
+                      DateFormat('MM-dd-yy HH:mm a').format(
                           _repoDetailsViewController
                                   .listOfRepoItems.updatedAt ??
                               DateTime.now()),

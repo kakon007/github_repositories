@@ -1,12 +1,13 @@
 import 'package:bs23_flutter_task_101/mixin.dart';
+import 'package:bs23_flutter_task_101/utils/colors_utils.dart';
 import 'package:bs23_flutter_task_101/view/repository_details/repository_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RepoDescriptionWidget extends StatelessWidget with Mixin {
+class RepoDescriptionAndLinkWidget extends StatelessWidget with Mixin {
   final RepositoryDetailsController _repoDetailsViewController = Get.find();
 
-  RepoDescriptionWidget({super.key});
+  RepoDescriptionAndLinkWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class RepoDescriptionWidget extends StatelessWidget with Mixin {
             fontSize: 16,
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 32),
         const Text(
           "GitHub",
           style: TextStyle(
@@ -42,11 +43,17 @@ class RepoDescriptionWidget extends StatelessWidget with Mixin {
             // openUrl(context,
             //     _repoDetailsViewController.listOfRepoItems.htmlUrl ?? '');
           },
-          child: Text(
-            _repoDetailsViewController.listOfRepoItems.htmlUrl ?? '',
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.blue,
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: ColorUtils.blue700)),
+            child: Text(
+              _repoDetailsViewController.listOfRepoItems.htmlUrl ?? '',
+              style: TextStyle(
+                fontSize: 16,
+                color: ColorUtils.blue700,
+              ),
             ),
           ),
         ),

@@ -1,7 +1,9 @@
 import 'package:bs23_flutter_task_101/configs/appConfig.dart';
 import 'package:bs23_flutter_task_101/configs/myTheme.dart';
+import 'package:bs23_flutter_task_101/mixin.dart';
 import 'package:bs23_flutter_task_101/view/home/home_controller.dart';
 import 'package:bs23_flutter_task_101/view/repository_details/repository_details_view.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -10,7 +12,7 @@ import 'package:intl/intl.dart';
 
 import '../../../utils/colors_utils.dart';
 
-class RepoListItem extends StatelessWidget {
+class RepoListItem extends StatelessWidget with Mixin {
   final HomeViewController _homeViewController = Get.find();
   RepoListItem({super.key});
 
@@ -48,7 +50,9 @@ class RepoListItem extends StatelessWidget {
                               _homeViewController.listOfRepoItems!.length &&
                           _homeViewController.hasMoreData.value) {
                         if (_homeViewController.isScrolled.value) {
-                          return const CupertinoActivityIndicator();
+                          return CupertinoActivityIndicator(
+                            color: ColorUtils.blue700,
+                          );
                         } else {
                           return const SizedBox();
                         }
@@ -68,9 +72,44 @@ class RepoListItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+                                  Container(
+                                    width: getWP(context, 10),
+                                    height: getWP(context, 10),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    child: _homeViewController
+                                                .listOfRepoItems![index]
+                                                .owner!
+                                                .avatarUrl !=
+                                            null
+                                        ? CircleAvatar(
+                                            backgroundColor:
+                                                const Color(0xffE9F0F7),
+                                            backgroundImage:
+                                                CachedNetworkImageProvider(
+                                                    _homeViewController
+                                                        .listOfRepoItems![index]
+                                                        .owner!
+                                                        .avatarUrl!))
+                                        : CircleAvatar(
+                                            backgroundColor: ColorUtils.grey50,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(14.0),
+                                              child: Image.asset(
+                                                  "assets/icon/profile_no_image.png"),
+                                            ),
+                                          ),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
                                   Expanded(
                                     flex: 2,
                                     child: Text(
@@ -106,7 +145,7 @@ class RepoListItem extends StatelessWidget {
                               Text(
                                 _homeViewController
                                         .listOfRepoItems![index].description ??
-                                    '',
+                                    'DesCription Not Found',
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
@@ -168,7 +207,7 @@ class RepoListItem extends StatelessWidget {
                                   ),
                                   const Spacer(),
                                   Text(
-                                    DateFormat('MM-dd-yyyy').format(
+                                    DateFormat('MM-dd-yy').format(
                                         _homeViewController
                                                 .listOfRepoItems![index]
                                                 .updatedAt ??

@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:bs23_flutter_task_101/configs/server.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'get_network_config.dart'
     if (dart.library.io) 'mobile_network_config.dart'
     if (dart.library.html) 'web_network_config.dart';
@@ -29,9 +30,10 @@ class NetworkService {
         sendTimeout: const Duration(seconds: 30),
       );
 
+    dio.interceptors.addAll({ErrorInterceptors(dio)});
     dio.interceptors.addAll({AuthInterceptor(dio)});
     dio.interceptors.addAll({Logging(dio)});
-    dio.interceptors.addAll({ErrorInterceptors(dio)});
+
     return dio;
   }
 
@@ -113,6 +115,8 @@ class AuthInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
+////For Further Auth Process////
+
     // accessToken = await PrefMgr.shared.getPrefStr("accessToken");
     // refreshToken = await PrefMgr.shared.getPrefStr("refreshToken");
 
@@ -171,6 +175,10 @@ class Logging extends Interceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
+    EasyLoading.showError(
+        'Something went wrong. Please check your network connection and try again later.',
+        duration: const Duration(seconds: 8));
+
     log('ERROR[${err.response!.statusCode ?? 'Unknown Status Code'}] => PATH: ${err.requestOptions.path}');
     super.onError(err, handler);
   }
@@ -183,7 +191,9 @@ class ErrorInterceptors extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     print(err.response!.statusCode);
-
+    EasyLoading.showError(
+        'Something went wrong. Please check your network connection and try again later.',
+        duration: const Duration(seconds: 8));
     if (err.response!.statusCode == 400 || err.response!.statusCode == 406) {
       print('Inside here error code');
     }

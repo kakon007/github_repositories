@@ -19,7 +19,7 @@ class HomeViewController extends GetxController {
   List<RepoListHiveModel>? localDataRepoListItem;
   DateTime lastRefreshTime = DateTime.now();
 
-  RxInt indexSortBy = RxInt(0);
+  RxInt indexSortBy = RxInt(3);
   final List<String> listofSortingNames = ["Star Count", "Last Update Date"];
 
   @override
@@ -65,7 +65,11 @@ class HomeViewController extends GetxController {
       "q": "Flutter",
       "page": pageStart,
       "per_page": pageCount,
-      "sort": indexSortBy.value == 0 ? "stars" : "updated",
+      "sort": indexSortBy.value == 3
+          ? ''
+          : indexSortBy.value == 0
+              ? "stars"
+              : "updated",
       "order": "desc"
     };
     var response = await RepositoriesApiService()
