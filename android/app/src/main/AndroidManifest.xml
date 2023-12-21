@@ -18,7 +18,7 @@
   </intent>
 </queries>
     <application
-        android:label="bs23_flutter_task_101"
+        android:label="@string/app_name"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

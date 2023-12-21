@@ -23,7 +23,7 @@ class NetworkService {
   static Dio createDio() {
     Dio dio = getClient()
       ..options = BaseOptions(
-        baseUrl: Server.BASE_URL,
+        baseUrl: Server.baseURL,
         followRedirects: false,
         receiveTimeout: const Duration(seconds: 30),
         connectTimeout: const Duration(seconds: 30),

@@ -7,7 +7,7 @@ class RepositoriesApiService {
   Future<GitHubRepositoryModel?> getGitHubRepositories(
       {Map<String, dynamic>? queryParams}) async {
     var response = await NetworkService().networkRequest(
-        url: Server.SEARCH_REPOSITORIES,
+        url: Server.search_repository_end_point,
         queryParameters: queryParams,
         requestType: RequestType.GET);
 
