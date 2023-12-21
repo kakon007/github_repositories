@@ -174,7 +174,7 @@ class Logging extends Interceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     EasyLoading.showError(
         'Something went wrong. Please check your network connection and try again later.',
         duration: const Duration(seconds: 8));
@@ -190,10 +190,11 @@ class ErrorInterceptors extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
-    print(err.response!.statusCode);
     EasyLoading.showError(
         'Something went wrong. Please check your network connection and try again later.',
         duration: const Duration(seconds: 8));
+    // print(err.response!.statusCode);
+
     if (err.response!.statusCode == 400 || err.response!.statusCode == 406) {
       print('Inside here error code');
     }
