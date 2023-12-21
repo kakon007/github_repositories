@@ -62,6 +62,29 @@ class RepoListItem extends StatelessWidget with Mixin {
                           Get.to(() => RepositoryDetailsView(),
                               arguments:
                                   _homeViewController.listOfRepoItems![index]);
+
+                          //todo: Hive Object Error
+
+                          // final data = RepoListHiveModel(
+                          //     name: _homeViewController
+                          //         .listOfRepoItems![index].name,
+                          //     owner: _homeViewController
+                          //         .listOfRepoItems![index].owner,
+                          //     description: _homeViewController
+                          //         .listOfRepoItems![index].description,
+                          //     stargazersCount: _homeViewController
+                          //         .listOfRepoItems![index].stargazersCount,
+                          //     createdAt: _homeViewController
+                          //         .listOfRepoItems![index].createdAt,
+                          //   );
+                          //   final box = Boxes.getData();
+                          //   box.add(data);
+
+                          //   data.save().then((value) => {
+                          //         Get.to(() => RepositoryDetailsView(),
+                          //             arguments: _homeViewController
+                          //                 .listOfRepoItems![index])
+                          //       });
                         },
                         child: Container(
                           padding: const EdgeInsets.all(16),
