@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FilterWidget extends StatelessWidget {
-  FilterWidget({super.key});
-
   final HomeViewController _homeViewController = Get.find();
+
+  FilterWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

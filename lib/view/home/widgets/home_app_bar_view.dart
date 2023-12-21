@@ -1,3 +1,4 @@
+import 'package:bs23_flutter_task_101/configs/app_define.dart';
 import 'package:bs23_flutter_task_101/shared/helper/common/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 2,
-      title: UIHelper().drawAppbarTitle(title: "GitHub Repositories"),
+      title: UIHelper().drawAppbarTitle(title: AppDefine.appName),
       actions: [
         IconButton(
           onPressed: () {

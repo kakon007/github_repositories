@@ -95,7 +95,7 @@ class NetworkService {
         return result.data;
       }
       return null;
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       log('My error: ${error.stackTrace}');
       return log(
           'Dio Error Type: ${error.type}, Error Msg: ${error.message ?? 'No msg'}, statusCode: ${error.response}');

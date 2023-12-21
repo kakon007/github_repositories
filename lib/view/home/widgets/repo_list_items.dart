@@ -169,7 +169,7 @@ class RepoListItem extends StatelessWidget with Mixin {
                                 _homeViewController
                                         .listOfRepoItems![index].description ??
                                     'DesCription Not Found',
-                                maxLines: 2,
+                                maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.w500),

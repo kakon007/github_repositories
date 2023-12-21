@@ -16,7 +16,7 @@ class HomeViewShimmer extends StatelessWidget {
         shrinkWrap: true,
         itemBuilder: (context, index) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.18,
+            height: MediaQuery.of(context).size.height * 0.17,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: Colors.white,

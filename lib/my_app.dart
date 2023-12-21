@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       smartManagement: SmartManagement.full,
       defaultTransition: Transition.cupertino,
-      title: AppDefine.APP_NAME,
+      title: AppDefine.appName,
       theme: ThemeData(
         fontFamily: 'Roboto',
         primaryColor: Colors.black,
