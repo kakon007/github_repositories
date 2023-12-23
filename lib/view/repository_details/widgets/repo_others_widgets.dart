@@ -26,49 +26,55 @@ class RepoOthersWidgets extends StatelessWidget {
         _getContrainer(
             Icons.star,
             'Stars',
-            _repoDetailsViewController.repoItemDetails.stargazersCount
+            _repoDetailsViewController.repoItemsHive.first.stargazersCount
                 .toString()),
         const SizedBox(height: 8),
-        _getContrainer(Icons.call_split, 'Forks',
-            _repoDetailsViewController.repoItemDetails.forksCount.toString()),
+        _getContrainer(
+            Icons.call_split,
+            'Forks',
+            _repoDetailsViewController.repoItemsHive.first.forksCount
+                .toString()),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.remove_red_eye,
             'Watchers',
-            _repoDetailsViewController.repoItemDetails.watchersCount
+            _repoDetailsViewController.repoItemsHive.first.watchersCount
                 .toString()),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.error,
             'Open Issues',
-            _repoDetailsViewController.repoItemDetails.openIssuesCount
+            _repoDetailsViewController.repoItemsHive.first.openIssuesCount
                 .toString()),
         const SizedBox(height: 8),
         _getContrainer(Icons.code, 'Language',
-            _repoDetailsViewController.repoItemDetails.language ?? ''),
+            _repoDetailsViewController.repoItemsHive.first.language ?? ''),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.calendar_today,
             'Created At',
             DateFormat('MM-dd-yyyy')
-                .format(_repoDetailsViewController.repoItemDetails.createdAt ??
-                    DateTime.now())
+                .format(
+                    _repoDetailsViewController.repoItemsHive.first.createdAt ??
+                        DateTime.now())
                 .toString()),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.calendar_today,
             'Updated At',
             DateFormat('MM-dd-yyyy')
-                .format(_repoDetailsViewController.repoItemDetails.updatedAt ??
-                    DateTime.now())
+                .format(
+                    _repoDetailsViewController.repoItemsHive.first.updatedAt ??
+                        DateTime.now())
                 .toString()),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.calendar_today,
             'Pushed At',
             DateFormat('MM-dd-yyyy')
-                .format(_repoDetailsViewController.repoItemDetails.pushedAt ??
-                    DateTime.now())
+                .format(
+                    _repoDetailsViewController.repoItemsHive.first.pushedAt ??
+                        DateTime.now())
                 .toString()),
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:bs23_flutter_task_101/configs/app_config.dart';
 import 'package:bs23_flutter_task_101/configs/my_theme.dart';
 import 'package:bs23_flutter_task_101/mixin.dart';
+import 'package:bs23_flutter_task_101/model/local_db_model/repo_list_model.dart';
 import 'package:bs23_flutter_task_101/view/home/home_controller.dart';
 import 'package:bs23_flutter_task_101/view/repository_details/repository_details_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../../box/boxes.dart';
 import '../../../utils/colors_utils.dart';
 
 class RepoListItem extends StatelessWidget with Mixin {
@@ -59,32 +61,49 @@ class RepoListItem extends StatelessWidget with Mixin {
                       }
                       return InkWell(
                         onTap: () {
-                          Get.to(() => RepositoryDetailsView(),
-                              arguments:
-                                  _homeViewController.listOfRepoItems![index]);
+                          // Get.to(() => RepositoryDetailsView(),
+                          //     arguments:
+                          //         _homeViewController.listOfRepoItems![index]);
 
-                          //todo: Hive Object Error
+                          EasyLoading.show(status: 'loading...');
 
-                          // final data = RepoListHiveModel(
-                          //     name: _homeViewController
-                          //         .listOfRepoItems![index].name,
-                          //     owner: _homeViewController
-                          //         .listOfRepoItems![index].owner,
-                          //     description: _homeViewController
-                          //         .listOfRepoItems![index].description,
-                          //     stargazersCount: _homeViewController
-                          //         .listOfRepoItems![index].stargazersCount,
-                          //     createdAt: _homeViewController
-                          //         .listOfRepoItems![index].createdAt,
-                          //   );
-                          //   final box = Boxes.getData();
-                          //   box.add(data);
+                          final data = RepoListHiveModel(
+                            name: _homeViewController
+                                .listOfRepoItems![index].name,
+                            ownerAvatarUrl: _homeViewController
+                                .listOfRepoItems![index].owner!.avatarUrl,
+                            ownerName: _homeViewController
+                                .listOfRepoItems![index].owner!.login,
+                            description: _homeViewController
+                                .listOfRepoItems![index].description,
+                            htmlUrl: _homeViewController
+                                .listOfRepoItems![index].htmlUrl,
+                            stargazersCount: _homeViewController
+                                .listOfRepoItems![index].stargazersCount,
+                            forksCount: _homeViewController
+                                .listOfRepoItems![index].forksCount,
+                            watchersCount: _homeViewController
+                                .listOfRepoItems![index].watchersCount,
+                            openIssuesCount: _homeViewController
+                                .listOfRepoItems![index].openIssuesCount,
+                            language: _homeViewController
+                                .listOfRepoItems![index].language,
+                            createdAt: _homeViewController
+                                .listOfRepoItems![index].createdAt,
+                            updatedAt: _homeViewController
+                                .listOfRepoItems![index].updatedAt,
+                            pushedAt: _homeViewController
+                                .listOfRepoItems![index].pushedAt,
+                          );
+                          EasyLoading.dismiss();
+                          final box = Boxes.getData();
+                          box.add(data);
 
-                          //   data.save().then((value) => {
-                          //         Get.to(() => RepositoryDetailsView(),
-                          //             arguments: _homeViewController
-                          //                 .listOfRepoItems![index])
-                          //       });
+                          data.save().then((value) => {
+                                Get.to(() => RepositoryDetailsView(),
+                                    arguments: _homeViewController
+                                        .listOfRepoItems![index])
+                              });
                         },
                         child: Container(
                           padding: const EdgeInsets.all(16),

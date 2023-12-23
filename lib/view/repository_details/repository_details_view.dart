@@ -15,7 +15,7 @@ class RepositoryDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("${_repoDetailsViewController.repoItemDetails.name}",
+        title: Text("${_repoDetailsViewController.repoItemsHive.first.name}",
             style: const TextStyle(color: Colors.black)),
       ),
       body: SingleChildScrollView(

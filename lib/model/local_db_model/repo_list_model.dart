@@ -165,6 +165,10 @@ class RepoListHiveModel extends HiveObject {
   DefaultBranch? defaultBranch;
   @HiveField(79)
   double? score;
+  @HiveField(80)
+  String? ownerAvatarUrl;
+  @HiveField(81)
+  String? ownerName;
 
   RepoListHiveModel({
     this.id,
@@ -247,5 +251,7 @@ class RepoListHiveModel extends HiveObject {
     this.watchers,
     this.defaultBranch,
     this.score,
+    this.ownerAvatarUrl,
+    this.ownerName,
   });
 }

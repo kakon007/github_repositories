@@ -97,13 +97,15 @@ class RepoListHiveModelAdapter extends TypeAdapter<RepoListHiveModel> {
       watchers: fields[77] as int?,
       defaultBranch: fields[78] as DefaultBranch?,
       score: fields[79] as double?,
+      ownerAvatarUrl: fields[80] as String?,
+      ownerName: fields[81] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, RepoListHiveModel obj) {
     writer
-      ..writeByte(80)
+      ..writeByte(82)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -263,7 +265,11 @@ class RepoListHiveModelAdapter extends TypeAdapter<RepoListHiveModel> {
       ..writeByte(78)
       ..write(obj.defaultBranch)
       ..writeByte(79)
-      ..write(obj.score);
+      ..write(obj.score)
+      ..writeByte(80)
+      ..write(obj.ownerAvatarUrl)
+      ..writeByte(81)
+      ..write(obj.ownerName);
   }
 
   @override

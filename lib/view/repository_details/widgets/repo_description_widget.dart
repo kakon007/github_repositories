@@ -24,7 +24,7 @@ class RepoDescriptionAndLinkWidget extends StatelessWidget with Mixin {
         ),
         const SizedBox(height: 8),
         Text(
-          _repoDetailsViewController.repoItemDetails.description ?? '',
+          _repoDetailsViewController.repoItemsHive.first.description ?? '',
           style: const TextStyle(
             fontSize: 16,
           ),
@@ -41,7 +41,7 @@ class RepoDescriptionAndLinkWidget extends StatelessWidget with Mixin {
         InkWell(
           onTap: () {
             openUrl(context,
-                _repoDetailsViewController.repoItemDetails.htmlUrl ?? '');
+                _repoDetailsViewController.repoItemsHive.first.htmlUrl ?? '');
           },
           child: Container(
             padding: const EdgeInsets.all(16),
@@ -49,7 +49,7 @@ class RepoDescriptionAndLinkWidget extends StatelessWidget with Mixin {
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: ColorUtils.blue700)),
             child: Text(
-              _repoDetailsViewController.repoItemDetails.htmlUrl ?? '',
+              _repoDetailsViewController.repoItemsHive.first.htmlUrl ?? '',
               style: TextStyle(
                 fontSize: 16,
                 color: ColorUtils.blue700,
