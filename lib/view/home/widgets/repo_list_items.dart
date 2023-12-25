@@ -2,6 +2,7 @@ import 'package:bs23_flutter_task_101/configs/app_config.dart';
 import 'package:bs23_flutter_task_101/configs/my_theme.dart';
 import 'package:bs23_flutter_task_101/mixin.dart';
 import 'package:bs23_flutter_task_101/model/local_db_model/repo_list_model.dart';
+import 'package:bs23_flutter_task_101/shared/helper/common/regx_helper.dart';
 import 'package:bs23_flutter_task_101/view/home/home_controller.dart';
 import 'package:bs23_flutter_task_101/view/repository_details/repository_details_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -242,7 +243,11 @@ class RepoListItem extends StatelessWidget with Mixin {
                                     width: 3,
                                   ),
                                   Text(
-                                    "${_homeViewController.listOfRepoItems![index].stargazersCount ?? ''}",
+                                    RegXHelper.addCommaEveryTwoDigits(
+                                        _homeViewController
+                                            .listOfRepoItems![index]
+                                            .stargazersCount
+                                            .toString()),
                                     style: const TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500),

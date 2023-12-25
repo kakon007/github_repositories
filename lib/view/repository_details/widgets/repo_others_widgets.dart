@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../../shared/helper/common/regx_helper.dart';
+
 class RepoOthersWidgets extends StatelessWidget {
   final RepositoryDetailsController _repoDetailsViewController = Get.find();
 
@@ -27,28 +29,35 @@ class RepoOthersWidgets extends StatelessWidget {
             Icons.star,
             'Stars',
             _repoDetailsViewController.repoItemsHive.first.stargazersCount
-                .toString()),
+                .toString(),
+            true),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.call_split,
             'Forks',
             _repoDetailsViewController.repoItemsHive.first.forksCount
-                .toString()),
+                .toString(),
+            true),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.remove_red_eye,
             'Watchers',
             _repoDetailsViewController.repoItemsHive.first.watchersCount
-                .toString()),
+                .toString(),
+            true),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.error,
             'Open Issues',
             _repoDetailsViewController.repoItemsHive.first.openIssuesCount
-                .toString()),
+                .toString(),
+            true),
         const SizedBox(height: 8),
-        _getContrainer(Icons.code, 'Language',
-            _repoDetailsViewController.repoItemsHive.first.language ?? ''),
+        _getContrainer(
+            Icons.code,
+            'Language',
+            _repoDetailsViewController.repoItemsHive.first.language ?? '',
+            false),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.calendar_today,
@@ -57,7 +66,8 @@ class RepoOthersWidgets extends StatelessWidget {
                 .format(
                     _repoDetailsViewController.repoItemsHive.first.createdAt ??
                         DateTime.now())
-                .toString()),
+                .toString(),
+            false),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.calendar_today,
@@ -66,7 +76,8 @@ class RepoOthersWidgets extends StatelessWidget {
                 .format(
                     _repoDetailsViewController.repoItemsHive.first.updatedAt ??
                         DateTime.now())
-                .toString()),
+                .toString(),
+            false),
         const SizedBox(height: 8),
         _getContrainer(
             Icons.calendar_today,
@@ -75,12 +86,14 @@ class RepoOthersWidgets extends StatelessWidget {
                 .format(
                     _repoDetailsViewController.repoItemsHive.first.pushedAt ??
                         DateTime.now())
-                .toString()),
+                .toString(),
+            false),
       ],
     );
   }
 
-  Widget _getContrainer(IconData? icon, String? title, String? value) {
+  Widget _getContrainer(
+      IconData? icon, String? title, String? value, bool? isNumber) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -103,7 +116,9 @@ class RepoOthersWidgets extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            value ?? '',
+            isNumber == true
+                ? RegXHelper.addCommaEveryTwoDigits(value)
+                : value!,
             style: const TextStyle(fontSize: 16),
           ),
         ],
