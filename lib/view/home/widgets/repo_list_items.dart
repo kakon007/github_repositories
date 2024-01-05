@@ -243,11 +243,11 @@ class RepoListItem extends StatelessWidget with Mixin {
                                     width: 3,
                                   ),
                                   Text(
-                                    RegXHelper.addCommaEveryTwoDigits(
+                                    RegXHelper.numberFormat.format(
                                         _homeViewController
-                                            .listOfRepoItems![index]
-                                            .stargazersCount
-                                            .toString()),
+                                                .listOfRepoItems![index]
+                                                .stargazersCount ??
+                                            0),
                                     style: const TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500),

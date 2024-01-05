@@ -117,7 +117,7 @@ class RepoOthersWidgets extends StatelessWidget {
           const Spacer(),
           Text(
             isNumber == true
-                ? RegXHelper.addCommaEveryTwoDigits(value)
+                ? RegXHelper.numberFormat.format(int.parse(value ?? "0") ?? 0)
                 : value!,
             style: const TextStyle(fontSize: 16),
           ),
