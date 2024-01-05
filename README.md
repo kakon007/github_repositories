@@ -11,13 +11,10 @@ I have developed a simple flutter app that shows the most starred flutter reposi
 2. Repository Details Screen
 ![App Screenshot](https://github.com/Kakon007/project_ss/blob/master/ss/5.png?raw=true)
 
-3. Splash Screen
-![App Screenshot](https://github.com/Kakon007/project_ss/blob/master/ss/1.png?raw=true)
-
-4. Filtering
+3. Filtering
 ![App Screenshot](https://github.com/Kakon007/project_ss/blob/master/ss/4.png?raw=true)
 
-5. After Launch Url
+4. After Launch Url
 ![App Screenshot](https://github.com/Kakon007/project_ss/blob/master/ss/6.png?raw=true)
 
 5. Project Architecture
