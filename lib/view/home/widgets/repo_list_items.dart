@@ -39,7 +39,7 @@ class RepoListItem extends StatelessWidget with Mixin {
               child: ListView.separated(
                 padding: const EdgeInsets.all(10),
                 addAutomaticKeepAlives: true,
-                cacheExtent: AppConfig.page_limit.toDouble(),
+                cacheExtent: AppConfig.pageLimit.toDouble(),
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 controller: _homeViewController.scrollController,

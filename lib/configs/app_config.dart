@@ -1,3 +1,3 @@
 class AppConfig {
-  static const int page_limit = 10;
+  static const int pageLimit = 10;
 }

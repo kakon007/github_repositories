@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewScreen extends StatefulWidget {
-  String? url;
-  String? repoName;
-  WebViewScreen({super.key, this.url, this.repoName});
+  final String? url;
+  final String? repoName;
+  const WebViewScreen({super.key, this.url, this.repoName});
 
   @override
   State<WebViewScreen> createState() => _WebViewScreenState();
@@ -15,7 +15,6 @@ class _WebViewScreenState extends State<WebViewScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     controller = WebViewController()
