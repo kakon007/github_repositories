@@ -44,13 +44,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> with Mixin {
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: MyTheme.bgColor,
-          body: Align(
-            alignment: Alignment.center,
-            child: Image.asset(
-              'assets/icon/bs_logo.png',
-              width: getWP(Get.context, 65),
-            ),
-          ),
+          // body: Align(
+          //   alignment: Alignment.center,
+          //   child: Image.asset(
+          //     'assets/icon/bs_logo.png',
+          //     width: getWP(Get.context, 65),
+          //   ),
+          // ),
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:bs23_flutter_task_101/mixin.dart';
 import 'package:bs23_flutter_task_101/utils/colors_utils.dart';
 import 'package:bs23_flutter_task_101/view/repository_details/repository_details_controller.dart';
+import 'package:bs23_flutter_task_101/view/webview/web_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,8 +41,19 @@ class RepoDescriptionAndLinkWidget extends StatelessWidget with Mixin {
         const SizedBox(height: 8),
         InkWell(
           onTap: () {
-            openUrl(context,
-                _repoDetailsViewController.repoItemsHive.first.htmlUrl ?? '');
+            // openUrl(context,
+            //     _repoDetailsViewController.repoItemsHive.first.htmlUrl ?? '');
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => WebViewScreen(
+                  url: _repoDetailsViewController.repoItemsHive.first.htmlUrl ??
+                      '',
+                  repoName: _repoDetailsViewController.repoItemsHive.first.name,
+                ),
+              ),
+            );
           },
           child: Container(
             padding: const EdgeInsets.all(16),
