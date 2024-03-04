@@ -149,7 +149,9 @@ class AuthInterceptor extends Interceptor {
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     if (kIsWeb) {
       if (accessToken == null) {
-        print('MY coookiee: ${response.headers.map['set-cookie']}');
+        if (kDebugMode) {
+          print('MY coookiee: ${response.headers.map['set-cookie']}');
+        }
       }
     }
     super.onResponse(response, handler);
@@ -196,7 +198,9 @@ class ErrorInterceptors extends Interceptor {
     // print(err.response!.statusCode);
 
     if (err.response!.statusCode == 400 || err.response!.statusCode == 406) {
-      print('Inside here error code');
+      if (kDebugMode) {
+        print('Inside here error code');
+      }
     }
     return handler.next(err);
   }

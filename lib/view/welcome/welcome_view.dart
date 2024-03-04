@@ -41,7 +41,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with Mixin {
           : SystemUiOverlayStyle.dark,
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Scaffold(
+        child: const Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: MyTheme.bgColor,
           // body: Align(
